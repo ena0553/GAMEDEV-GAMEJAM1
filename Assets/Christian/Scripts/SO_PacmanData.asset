@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174dea572cc75e44caef1b468036d491, type: 3}
   m_Name: SO_PacmanData
   m_EditorClassIdentifier: Assembly-CSharp::SO_Pacman
-  moveSpeed: 5
-  teleportChancePerFrame: 0.005
+  teleportChancePerFrame: 0.0005
   timeBetweenPathingToPlayer: 0.2

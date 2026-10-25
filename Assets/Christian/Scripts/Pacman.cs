@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -9,6 +10,9 @@ public class Pacman : MonoBehaviour
     [SerializeField] private SO_PacmanData pacmanData;
     private NavMeshAgent navMeshAgent;
     private Coroutine pathToPlayerCoroutine;
+    [SerializeField] private Transform pacmanTeleportPoint; 
+    [SerializeField] private float deathRespawnDelay = 1f;
+    private Coroutine teleportAfterDeathCoroutine;
 
     private void OnEnable()
     {
@@ -60,4 +64,34 @@ public class Pacman : MonoBehaviour
         GoToPlayer();
         yield return new WaitForSeconds(pacmanData.timeBetweenPathingToPlayer);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            ObjectRegistry.player.Die();
+
+            if (teleportAfterDeathCoroutine != null)
+            {
+                StopCoroutine(teleportAfterDeathCoroutine);
+            }
+            teleportAfterDeathCoroutine = StartCoroutine(TeleportAfterDeathRoutine());
+        }
+    }
+
+    private IEnumerator TeleportAfterDeathRoutine()
+    {
+        yield return new WaitForSeconds(deathRespawnDelay);
+
+        if (pacmanTeleportPoint != null)
+        {
+            navMeshAgent.enabled = false;
+            transform.SetPositionAndRotation(pacmanTeleportPoint.position, pacmanTeleportPoint.rotation);
+            navMeshAgent.enabled = true;
+        }
+
+        teleportAfterDeathCoroutine = null;
+    }
+
+
 }
