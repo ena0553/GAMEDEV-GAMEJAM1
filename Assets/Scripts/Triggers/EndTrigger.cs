@@ -7,7 +7,8 @@ public class EndTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScene");
+            //UnityEngine.SceneManagement.SceneManager.LoadScene("VictoryScene");
+            EventManager.InvokeVictoryEvent();
         }
         
     }

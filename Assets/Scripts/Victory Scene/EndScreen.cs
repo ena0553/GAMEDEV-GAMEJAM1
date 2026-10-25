@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class EndScreen : MonoBehaviour
 {
@@ -8,6 +7,7 @@ public class EndScreen : MonoBehaviour
     public void Replay()
     {
         Debug.Log("Button Clicked!");
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
+        EventManager.InvokeReturnToLobbyEvent();
     }
 }

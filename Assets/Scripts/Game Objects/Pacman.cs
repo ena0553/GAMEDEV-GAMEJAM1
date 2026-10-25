@@ -21,7 +21,8 @@ public class Pacman : MonoBehaviour
         {
             StopCoroutine(pathToPlayerCoroutine);
         }
-        pathToPlayerCoroutine = StartCoroutine(GoToPlayerEnumerator());
+        pathToPlayerCoroutine = StartCoroutine(GoToPlayerRoutine());
+        TeleportToStartingPoint();
     }
 
     private void OnDisable()
@@ -59,7 +60,7 @@ public class Pacman : MonoBehaviour
         navMeshAgent.SetDestination(ObjectRegistry.player.transform.position);
     }
 
-    private IEnumerator GoToPlayerEnumerator()
+    private IEnumerator GoToPlayerRoutine()
     {
         GoToPlayer();
         yield return new WaitForSeconds(pacmanData.timeBetweenPathingToPlayer);
@@ -69,7 +70,7 @@ public class Pacman : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            ObjectRegistry.player.Die();
+            EventManager.InvokePlayerDeathEvent();
 
             if (teleportAfterDeathCoroutine != null)
             {
@@ -82,16 +83,17 @@ public class Pacman : MonoBehaviour
     private IEnumerator TeleportAfterDeathRoutine()
     {
         yield return new WaitForSeconds(deathRespawnDelay);
+        TeleportToStartingPoint();
+        teleportAfterDeathCoroutine = null;
+    }
 
+    private void TeleportToStartingPoint()
+    {
         if (pacmanTeleportPoint != null)
         {
             navMeshAgent.enabled = false;
             transform.SetPositionAndRotation(pacmanTeleportPoint.position, pacmanTeleportPoint.rotation);
             navMeshAgent.enabled = true;
         }
-
-        teleportAfterDeathCoroutine = null;
     }
-
-
 }

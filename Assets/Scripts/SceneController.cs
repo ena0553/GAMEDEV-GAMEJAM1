@@ -11,6 +11,8 @@ public class SceneController : MonoBehaviour
 
     private void Awake()
     {
+        Transform parentTransform = transform.parent;
+
         if (instance == null)
         {
             instance = this;
@@ -21,13 +23,10 @@ public class SceneController : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !transitioning)
+        if (parentTransform != null && parentTransform.childCount == 0)
         {
-            LoadLevel("Maze");
+            Destroy(parentTransform.gameObject);
         }
     }
 
@@ -70,4 +69,12 @@ public class SceneController : MonoBehaviour
             if (Keyboard.current.f2Key.wasPressedThisFrame) LoadLevel("Lobby");
         }
     }
+
+    /*private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !transitioning)
+        {
+            LoadLevel("Maze");
+        }
+    }*/
 }

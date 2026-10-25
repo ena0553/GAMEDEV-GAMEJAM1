@@ -8,7 +8,8 @@ public class LevelTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneController.instance.LoadLevel(targetScene);
+            //SceneController.instance.LoadLevel(targetScene);
+            EventManager.InvokeLoadLevelEvent(targetScene);
         }
     }
 }

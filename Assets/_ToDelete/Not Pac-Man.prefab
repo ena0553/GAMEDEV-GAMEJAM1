@@ -37954,6 +37954,7 @@ GameObject:
   - component: {fileID: 5452734997567216326}
   - component: {fileID: 6480503096962625831}
   - component: {fileID: 8770577581171241771}
+  - component: {fileID: 4044032364448749515}
   m_Layer: 0
   m_Name: Not Pac-Man
   m_TagString: Untagged
@@ -72054,6 +72055,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pacman
   pacmanData: {fileID: 11400000, guid: f0b3a98f94fa2b647bb8b54eea0dce97, type: 2}
+  pacmanTeleportPoint: {fileID: 0}
+  deathRespawnDelay: 1
+--- !u!195 &4044032364448749515
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5420430291455475680}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8020242989127996420
 GameObject:
   m_ObjectHideFlags: 0

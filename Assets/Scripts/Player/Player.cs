@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
-
     [SerializeField] private Transform respawnPoint;
 
     private Vector3 startPos;
@@ -17,11 +16,13 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         ObjectRegistry.player = this;
+        EventManager.PlayerDeathEvent += Die;
     }
 
     private void OnDisable()
     {
         ObjectRegistry.player = null;
+        EventManager.PlayerDeathEvent -= Die;
     }
     
     public void Die()
