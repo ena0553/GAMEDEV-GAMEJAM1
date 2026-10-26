@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SO_Pacman
   teleportChancePerFrame: 0.0005
   timeBetweenPathingToPlayer: 0.2
+  deathRespawnDelay: 1

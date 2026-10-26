@@ -10,8 +10,7 @@ public class Pacman : MonoBehaviour
     [SerializeField] private SO_PacmanData pacmanData;
     private NavMeshAgent navMeshAgent;
     private Coroutine pathToPlayerCoroutine;
-    [SerializeField] private Transform pacmanTeleportPoint; 
-    [SerializeField] private float deathRespawnDelay = 1f;
+    [SerializeField] private Transform pacmanTeleportPoint;
     private Coroutine teleportAfterDeathCoroutine;
 
     private void OnEnable()
@@ -36,8 +35,6 @@ public class Pacman : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float x = Random.value;
-        float y = pacmanData.teleportChancePerFrame;
         if (Random.value < pacmanData.teleportChancePerFrame)
         {
             int randomIndex = Random.Range(0, ObjectRegistry.pellets.Count);
@@ -82,7 +79,7 @@ public class Pacman : MonoBehaviour
 
     private IEnumerator TeleportAfterDeathRoutine()
     {
-        yield return new WaitForSeconds(deathRespawnDelay);
+        yield return new WaitForSeconds(pacmanData.deathRespawnDelay);
         TeleportToStartingPoint();
         teleportAfterDeathCoroutine = null;
     }
