@@ -710,7 +710,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 321976407}
+  m_Mesh: {fileID: 570096209}
 --- !u!33 &65034630
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -4761,7 +4761,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 570096209}
+  m_Mesh: {fileID: 552905686}
 --- !u!33 &725526773
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -5399,7 +5399,7 @@ MonoBehaviour:
     conserve resources, we salvaged what we could of our initial models to combine
     them with our few G.H.O.S.T. samples to create \"training data\" for future use.\n\nIt
     seems our latest model, PAC-loool is highly effective against G.H.O.S.T. entities.
-    It seems to even have developed some form G.H.O.S.T. DNA independently, which
+    It seems to even have developed some form of G.H.O.S.T. DNA independently, which
     will surely have no unforeseen consequences.\n\nThank you for your service, former
     PAC-Man!\n"
   m_isRightToLeft: 0

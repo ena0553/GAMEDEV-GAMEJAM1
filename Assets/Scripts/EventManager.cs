@@ -4,8 +4,9 @@ public static class EventManager
 {
     public static event UnityAction PlayerDeathEvent;
     public static event UnityAction<string> LoadLevelEvent;
-    public static event UnityAction ReturnToLobbyEvent;
+    public static event UnityAction GoToLobbyEvent;
     public static event UnityAction VictoryEvent;
+    public static event UnityAction ReturnToStartEvent;
 
     public static void InvokePlayerDeathEvent()
     {
@@ -17,13 +18,18 @@ public static class EventManager
         LoadLevelEvent?.Invoke(sceneName);
     }
 
-    public static void InvokeReturnToLobbyEvent()
+    public static void InvokeGoToLobbyEvent()
     {
-        ReturnToLobbyEvent?.Invoke();
+        GoToLobbyEvent?.Invoke();
     }
 
     public static void InvokeVictoryEvent()
     {
         VictoryEvent?.Invoke();
+    }
+
+    public static void InvokeReturnToStartEvent()
+    {
+        ReturnToStartEvent?.Invoke();
     }
 }

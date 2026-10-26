@@ -8,6 +8,6 @@ public class EndScreen : MonoBehaviour
     {
         Debug.Log("Button Clicked!");
         //UnityEngine.SceneManagement.SceneManager.LoadScene("Lobby");
-        EventManager.InvokeReturnToLobbyEvent();
+        EventManager.InvokeReturnToStartEvent();
     }
 }

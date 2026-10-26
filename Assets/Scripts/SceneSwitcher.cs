@@ -29,15 +29,17 @@ public class SceneSwitcher : MonoBehaviour
     private void OnEnable()
     {
         EventManager.LoadLevelEvent += SwitchToLevel;
-        EventManager.ReturnToLobbyEvent += SwitchToLobby;
+        EventManager.GoToLobbyEvent += SwitchToLobby;
         EventManager.VictoryEvent += SwitchToVictoryScreen;
+        EventManager.ReturnToStartEvent += SwitchToStartScreen;
     }
 
     private void OnDisable()
     {
         EventManager.LoadLevelEvent -= SwitchToLevel;
-        EventManager.ReturnToLobbyEvent -= SwitchToLobby;
+        EventManager.GoToLobbyEvent -= SwitchToLobby;
         EventManager.VictoryEvent -= SwitchToVictoryScreen;
+        EventManager.ReturnToStartEvent -= SwitchToStartScreen;
     }
 
     private void SwitchToLevel(string targetScene)
@@ -53,5 +55,10 @@ public class SceneSwitcher : MonoBehaviour
     private void SwitchToVictoryScreen()
     {
         SceneManager.LoadScene("VictoryScene");
+    }
+
+    private void SwitchToStartScreen()
+    {
+        SceneManager.LoadScene("StartScreen");
     }
 }
